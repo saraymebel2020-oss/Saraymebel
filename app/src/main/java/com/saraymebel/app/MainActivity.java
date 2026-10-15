@@ -1,56 +1,69 @@
 package com.saraymebel.app;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
-import android.graphics.Color;
-import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class MainActivity extends Activity {
+
+    LinearLayout layout;
+    ArrayList<String> clients = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        showHome();
+    }
 
-        LinearLayout layout = new LinearLayout(this);
+    void showHome() {
+        layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setPadding(40, 60, 40, 40);
-        layout.setBackgroundColor(Color.WHITE);
+        layout.setPadding(30, 40, 30, 30);
 
         TextView title = new TextView(this);
         title.setText("SARAY MEBEL");
         title.setTextSize(28);
-        title.setTextColor(Color.BLACK);
-        title.setGravity(Gravity.CENTER);
         layout.addView(title);
 
-        Button clients = new Button(this);
-        clients.setText("Клиенты");
-        layout.addView(clients);
+        Button clientsButton = new Button(this);
+        clientsButton.setText("Клиенты");
+        layout.addView(clientsButton);
 
-        Button orders = new Button(this);
-        orders.setText("Заказы");
-        layout.addView(orders);
+        Button ordersButton = new Button(this);
+        ordersButton.setText("Заказы");
+        layout.addView(ordersButton);
 
-        Button payments = new Button(this);
-        payments.setText("Платежи");
-        layout.addView(payments);
+        Button paymentsButton = new Button(this);
+        paymentsButton.setText("Платежи");
+        layout.addView(paymentsButton);
 
-        clients.setOnClickListener(v ->
-            Toast.makeText(this, "Клиенты", Toast.LENGTH_SHORT).show()
-        );
-
-        orders.setOnClickListener(v ->
-            Toast.makeText(this, "Заказы", Toast.LENGTH_SHORT).show()
-        );
-
-        payments.setOnClickListener(v ->
-            Toast.makeText(this, "Платежи", Toast.LENGTH_SHORT).show()
-        );
+        clientsButton.setOnClickListener(v -> showClients());
+        ordersButton.setOnClickListener(v ->
+            Toast.makeText(this, "Раздел заказов скоро", Toast.LENGTH_SHORT).show());
+        paymentsButton.setOnClickListener(v ->
+            Toast.makeText(this, "Раздел платежей скоро", Toast.LENGTH_SHORT).show());
 
         setContentView(layout);
     }
-}
+
+    void showClients() {
+        LinearLayout page = new LinearLayout(this);
+        page.setOrientation(LinearLayout.VERTICAL);
+        page.setPadding(30, 30, 30, 30);
+
+        Button back = new Button(this);
+        back.setText("Назад");
+        page.addView(back);
+        back.setOnClickListener(v -> showHome());
+
+        Button add =

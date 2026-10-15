@@ -1,0 +1,16 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'com.saraymebel.app'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'com.saraymebel.app'
+        minSdk 24
+        targetSdk 28
+        versionCode 1
+        versionName '1.0'
+        buildConfigField 'String', 'SUPABASE_URL', '"https://hjvkccuglkmjrcdqektj.supabase.co"'
+        buildConfigField 'String', 'SUPABASE_KEY', '"sb_publishable_IgemQQlcBRpQBeplrCbQxQ_yBOsh6NW"'
+    }
+    buildFeatures { buildConfig true }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+}

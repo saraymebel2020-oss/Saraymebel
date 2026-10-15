@@ -66,4 +66,14 @@ public class MainActivity extends Activity {
         page.addView(back);
         back.setOnClickListener(v -> showHome());
 
-        Button add =
+        Button add = new Button(this);
+        add.setText("Добавить клиента");
+page.addView(add);
+
+add.setOnClickListener(v ->
+    Toast.makeText(this, "Добавление клиента скоро", Toast.LENGTH_SHORT).show()
+);
+
+setContentView(page);
+    }
+}
